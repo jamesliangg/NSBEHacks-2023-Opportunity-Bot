@@ -1,8 +1,0 @@
-{
-  "name": "basic-slack-example",
-  "author": "James",
-  "publish": false,
-  "dependencies": {
-    "lib": "latest"
-  }
-}
