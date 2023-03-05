@@ -1,6 +1,6 @@
 import {getWebsiteData} from "./puppeteerFunctions.js";
 import {cohereSummary} from "./cohereFunctions.js";
-import {cohereSentiment} from "./cohereFunctions.js";
+import {cohereClassify} from "./cohereFunctions.js";
 import {writeMongo} from "./write.js";
 
 const websiteInformation = await getWebsiteData();
@@ -13,8 +13,8 @@ for (var i in websiteInformation) {
     var summarize = await cohereSummary(cohereInput);
     summarize = summarize.body.summary;
     // console.log("summ " + summarize);
-    var sentiment = await cohereSentiment(cohereInput);
-    sentiment = sentiment.body.classifications[0].prediction;
+    var classification = await cohereClassify(cohereInput);
+    classification = classification.body.classifications[0].prediction;
     // console.log("sent" + sentiment);
-    const writeData = await writeMongo(sentiment, websiteInformation[i][2], websiteInformation[i][3], websiteInformation[i][4], websiteInformation[i][1], websiteInformation[i][0], summary, "conference")
+    const writeData = await writeMongo(classification.toLowerCase(), websiteInformation[i][2].toLowerCase(), websiteInformation[i][3], websiteInformation[i][4], websiteInformation[i][1], websiteInformation[i][0], summarize, "conference")
 }

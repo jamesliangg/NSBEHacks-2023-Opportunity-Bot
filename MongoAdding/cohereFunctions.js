@@ -1,6 +1,7 @@
-// const cohere_key = process.env.COHERE_API_KEY;
-const cohere_key = "mq4vtwKRIq2UVJqCmKSX6kiBVpNJECw8IvIUSpHn";
 import cohere from "cohere-ai";
+import dotenv from "dotenv";
+dotenv.config();
+const cohere_key = process.env.COHERE_API_KEY;
 cohere.init(cohere_key);
 import exampleData from "./examples.json" assert { type: "json" };
 const examples = JSON.parse(JSON.stringify(exampleData));
@@ -16,13 +17,13 @@ export async function cohereSummary (input) {
     return summarize;
 }
 
-export async function cohereSentiment (input) {
+export async function cohereClassify (input) {
     input = [input];
     console.log(input)
     // analyze sentiment of messages
-    const sentiment = await cohere.classify({
+    const classification = await cohere.classify({
         inputs: input,
         examples: examples,
     });
-    return sentiment;
+    return classification;
 }
