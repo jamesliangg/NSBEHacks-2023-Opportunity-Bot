@@ -1,21 +1,26 @@
 {
   "name": "jliang/slack-bot",
-  "timeout": 10000,
+  "timeout": 30000,
   "connector": false,
   "events": {
-    "functions/events/slack/view_submission.js": {
-      "name": "slack.view_submission",
-      "subtype": {
-        "callback_id": "search-terms"
-      }
-    },
     "functions/events/slack/command/opp.js": {
       "name": "slack.command",
       "subtype": {
         "command": "opp"
       }
+    },
+    "functions/events/slack/command/view_submission.js": {
+      "name": "slack.view_submission",
+      "subtype": {
+        "callback_id": "search-terms"
+      }
     }
   },
   "source": "https://github.com/jacoblee93/slack-tutorial-bot/",
-  "env": []
+  "env": [
+    {
+      "name": "MONGODB_APIKEY",
+      "description": "Authenticates with MongoDB"
+    }
+  ]
 }

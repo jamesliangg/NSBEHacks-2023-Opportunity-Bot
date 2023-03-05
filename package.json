@@ -3,6 +3,7 @@
   "author": "James",
   "publish": false,
   "dependencies": {
-    "lib": "latest"
+    "lib": "latest",
+    "axios": "^1.3.4"
   }
 }
