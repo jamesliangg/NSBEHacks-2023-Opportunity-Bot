@@ -53,8 +53,3 @@ export async function getWebsiteData() {
     finalArray.push([titleArray[2], webLocArray[6], webLocArray[7], dateArray[4], dateArray[5], descArray[2]]);
     return finalArray;
 }
-
-
-// console.log(finalArray);
-
-// console.log(callThisOne(testWebsite));

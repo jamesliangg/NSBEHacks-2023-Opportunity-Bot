@@ -1,4 +1,7 @@
 import axios from "axios";
+import dotenv from "dotenv";
+dotenv.config();
+const mongo_key = process.env.MONGO_API_KEY;
 
 export async function writeMongo(community, city, beginDate, endDate, link, opportunityName, summary, type) {
     var data = JSON.stringify({
@@ -23,7 +26,7 @@ export async function writeMongo(community, city, beginDate, endDate, link, oppo
         headers: {
             'Content-Type': 'application/json',
             'Access-Control-Request-Headers': '*',
-            'api-key': 'IDZmp6ebGz2serkv6kcWknfvJn690yOUnQ1Uh6ADA8zZ3WEflyV1Kzgqojw7uUJK',
+            'api-key': mongo_key,
         },
         data: data
     };

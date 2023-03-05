@@ -16,5 +16,5 @@ for (var i in websiteInformation) {
     var classification = await cohereClassify(cohereInput);
     classification = classification.body.classifications[0].prediction;
     // console.log("sent" + sentiment);
-    const writeData = await writeMongo(classification.toLowerCase(), websiteInformation[i][2].toLowerCase(), websiteInformation[i][3], websiteInformation[i][4], websiteInformation[i][1], websiteInformation[i][0], summarize, "conference")
+    const writeData = await writeMongo(classification.toLowerCase().trim(), websiteInformation[i][2].toLowerCase().trim(), websiteInformation[i][3].trim(), websiteInformation[i][4].trim(), websiteInformation[i][1].trim(), websiteInformation[i][0].trim(), summarize.trim(), "conference")
 }
