@@ -1,6 +1,6 @@
 const lib = require('lib')({token: process.env.STDLIB_SECRET_TOKEN});
 const mdbFunctions = require('./mdbFunctions.js');
-var finalMessage;
+var finalMessage = "";
 
 module.exports = async (event) => {
   console.log('view_submission.js called');
@@ -19,15 +19,24 @@ module.exports = async (event) => {
   console.log("test2 " + outputText);
   for (var i in outputText) {
     let tempText = outputText[i];
-    console.log("test3 " + JSON.stringify(tempText));
-    finalMessage += tempText[i].community;
-    finalMessage += tempText[i].city;
-    finalMessage += tempText[i].beginDate;
-    finalMessage += tempText[i].endDate;
-    finalMessage += tempText[i].link;
-    finalMessage += tempText[i].opportunityName;
-    finalMessage += tempText[i].summary;
-    finalMessage += tempText[i].type;
+    // console.log("test3 " + JSON.stringify(tempText));
+    console.log(tempText);
+    finalMessage += "> " + tempText.opportunityName;
+    finalMessage += "\n"
+    finalMessage += tempText.summary;
+    finalMessage += "\n"
+    finalMessage += "Type: " + tempText.type;
+    finalMessage += "\n"
+    finalMessage += "Community: " + tempText.community;
+    finalMessage += "\n"
+    finalMessage += "City: " + tempText.city;
+    finalMessage += "\n"
+    finalMessage += "Begin Date: " + tempText.beginDate;
+    finalMessage += "\n"
+    finalMessage += "End Date: " + tempText.endDate;
+    finalMessage += "\n"
+    finalMessage += tempText.link;
+    finalMessage += "\n\n"
   }
   console.log(finalMessage);
   await lib.slack.messages['@0.6.1'].ephemeral.create({
