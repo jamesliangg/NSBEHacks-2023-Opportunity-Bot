@@ -35,3 +35,6 @@ The returned opportunities are then messaged to the user privately using a ephem
 
 ## Reference links
 - https://autocode.com/slack/templates/slack-airtable-reminders/
+- https://www.mongodb.com/docs/atlas/app-services/data-api/generated-endpoints/
+- https://docs.cohere.ai/reference/classify
+- https://docs.cohere.ai/reference/summarize-2
