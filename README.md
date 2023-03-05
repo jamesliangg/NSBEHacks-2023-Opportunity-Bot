@@ -12,6 +12,7 @@ The returned opportunities are then messaged to the user privately using a ephem
 
 ## Requirements
 - Cohere API Key
+- MongoDB API Key and Database
 
 ## Using the bot
 - See available communities and locations with the `/opp help` command
