@@ -33,7 +33,7 @@ async function modalBox (commandRequest) {
             },
             "label": {
               "type": "plain_text",
-              "text": "Community (black)",
+              "text": "Community (lgbtqia+)",
               "emoji": true
             }
           },
@@ -85,7 +85,7 @@ async function modalBox (commandRequest) {
     result.slack.messageResponse = await lib.slack.messages['@0.6.1'].ephemeral.create({
       channelId: commandRequest.channel_id,
         userId: commandRequest.user_id,
-      text: `> Open search box with \`/opp search\`\n>\n> Current Communities:\n> • black\n> • example1\n> • example2\n>\n> Current Locations:\n> • toronto\n> • atlanta\n> • example3`
+      text: `> Open search box with \`/opp search\`\n>\n> Current Communities:\n> • disabled\n> • religious minority\n> • person of color\n> • women\n> • lgbtqia+\n>\n> Current Locations:\n> • toronto\n> • oshawa\n> • winnipeg\n> • vancouver\n> • ottawa`
     });
   }
 }
