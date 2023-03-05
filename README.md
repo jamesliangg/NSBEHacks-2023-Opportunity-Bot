@@ -12,10 +12,19 @@ The returned opportunities are then messaged to the user privately using a ephem
 
 ## Requirements
 - Cohere API Key
+- MongoDB API Key
 
 ## Using the bot
 - See available communities and locations with the `/opp help` command
 - Open the search box with `/opp search` 
+
+## Adding to the Database
+- Download the `MongoAdding` folder
+- Do `npm install`
+- Create a `.env` file with your Cohere API key, it should be labled `COHERE_API_KEY`
+- Add your MongoDB key to `.env` and label it `MONGO_API_KEY`
+- Change your database information in `write.js` (url, collection, database, dataSource)
+- Run with `node index`
 
 ## Credits
 - James Liang
