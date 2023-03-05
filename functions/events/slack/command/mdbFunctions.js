@@ -8,7 +8,7 @@ async function fetchDB (city, community) {
     "dataSource": "AclaimBot",
     "filter": {"city": city, "community": community},
     // "filter": {"city": "toronto", "community": "transgender"},
-    "limit": 3
+    "limit": 5
   });
   
   var config = {

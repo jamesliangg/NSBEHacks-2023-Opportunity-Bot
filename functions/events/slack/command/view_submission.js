@@ -1,5 +1,6 @@
 const lib = require('lib')({token: process.env.STDLIB_SECRET_TOKEN});
 const mdbFunctions = require('./mdbFunctions.js');
+var finalMessage;
 
 module.exports = async (event) => {
   console.log('view_submission.js called');
@@ -11,12 +12,28 @@ module.exports = async (event) => {
   let locationValue = locationBlockValue[Object.keys(locationBlockValue)[0]].value.toLowerCase();
   let beginDateValue = beginDateBlockValue[Object.keys(beginDateBlockValue)[0]].value.toLowerCase();
   let endDateValue = endDateBlockValue[Object.keys(endDateBlockValue)[0]].value.toLowerCase();
-  const outputText = await mdbFunctions.fetchDB(locationValue, communityValue);
-  console.log(outputText);
+  var outputText = await mdbFunctions.fetchDB(locationValue, communityValue);
+  console.log("test1 " + outputText);
+  outputText = JSON.parse(outputText);
+  outputText = outputText.documents;
+  console.log("test2 " + outputText);
+  for (var i in outputText) {
+    let tempText = outputText[i];
+    console.log("test3 " + JSON.stringify(tempText));
+    finalMessage += tempText[i].community;
+    finalMessage += tempText[i].city;
+    finalMessage += tempText[i].beginDate;
+    finalMessage += tempText[i].endDate;
+    finalMessage += tempText[i].link;
+    finalMessage += tempText[i].opportunityName;
+    finalMessage += tempText[i].summary;
+    finalMessage += tempText[i].type;
+  }
+  console.log(finalMessage);
   await lib.slack.messages['@0.6.1'].ephemeral.create({
     channelId: event.view.private_metadata,
     userId: event.user.id,
-    text: outputText
+    text: finalMessage
   });
 
 };
