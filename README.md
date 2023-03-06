@@ -34,7 +34,7 @@ The scraping function scrapes a website with opportunities using puppeteer. Thes
 - MongoDB Database
 
 ## Autocode
-Install the project on ![Autocode](https://autocode.com/jliang/templates/slack-bot/). You'll need to connect Slack using the longer six step method. An example App Manifest is in the `Autocode` folder. 
+Install the project at https://autocode.com/jliang/templates/slack-bot/. You'll need to connect Slack using the longer six step method. An example App Manifest is in the `Autocode` folder. 
 
 You'll also need to replace the `mongo` variables at the top of the `mdbFunctions.js` file. Your MongoDB API key should be stored as an environment variable.
 
