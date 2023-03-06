@@ -1,20 +1,25 @@
-import puppeteer from "puppeteer";
+// currently working website
 const testWebsite = "https://airtable.com/shrHRqQkdh5BLKATh/tbl5pt0Pd2MIWT1bb"
+
+import puppeteer from "puppeteer";
 var finalArray = [];
 // let outputArray;
 var titleArray = new Array;
 var webLocArray = new Array;
 var descArray = new Array;
 var dateArray = new Array;
+
+// could be redundant
 export async function callThisOne(website, reviewSelector) {
     return await scrapeWebsite(website, reviewSelector);
 }
 
+// scrapes website with puppeteer and returns an array with specified selector
 async function scrapeWebsite(website, reviewSelector) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(website);
-    await page.screenshot({ path: "website.png", fullPage: true });
+    // await page.screenshot({ path: "website.png", fullPage: true });
     const reviews = await page.evaluate((reviewSelector) => {
         return Array.from(document.querySelectorAll(reviewSelector)).map(x => x.textContent)
     }, reviewSelector);
@@ -23,6 +28,7 @@ async function scrapeWebsite(website, reviewSelector) {
     return reviews;
 }
 
+// gets website data for specific airtable at top
 export async function getWebsiteData() {
     for (let i = 0; i < 4; i++) {
         if (i == 0) {

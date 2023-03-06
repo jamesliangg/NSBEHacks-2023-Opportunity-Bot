@@ -1,14 +1,14 @@
 const lib = require('lib')({token: process.env.STDLIB_SECRET_TOKEN});
-
-console.log("test3");
 const modalInput = await modalBox(context.params.event);
 
+// creates Slack modal box for input
 async function modalBox (commandRequest) {
   let result = {slack: {}};
 
   let commandText = commandRequest.text.trim();
   let commandTextComponents = commandText.split(/(\s+)/);
 
+  // creates modal box if user does /opp search
   if (commandTextComponents[0].toLowerCase() === 'search') {
     let submission = await lib.slack.views['@0.0.3'].open({
       trigger_id: commandRequest.trigger_id,
@@ -80,6 +80,7 @@ async function modalBox (commandRequest) {
     });
     return submission;
   }
+  // sends ephemeral help message if user tests anything else
   else {
     console.log(`Help Menu`);
     result.slack.messageResponse = await lib.slack.messages['@0.6.1'].ephemeral.create({

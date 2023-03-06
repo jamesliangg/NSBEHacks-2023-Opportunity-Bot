@@ -1,0 +1,55 @@
+{
+    "display_information": {
+        "name": "Opportunity Bot",
+        "description": "Find opportunities of your community",
+        "background_color": "#37393d",
+        "long_description": "The user calls the Slack bot with opp search and inputs their community and location. This data is used to query our MongoDB database and sends you a private ephemeral message on Slack. None of the input data is stored for the privacy of the user."
+    },
+    "features": {
+        "bot_user": {
+            "display_name": "Opportunity Bot",
+            "always_online": true
+        },
+        "slash_commands": [
+            {
+                "command": "/opp",
+                "url": "AUTOCODE_EVENTS_LINK",
+                "description": "Find opportunities",
+                "usage_hint": "search",
+                "should_escape": false
+            }
+        ]
+    },
+    "oauth_config": {
+        "redirect_urls": [
+            "AUTOCODE_SLACK_AUTH_LINK"
+        ],
+        "scopes": {
+            "bot": [
+                "chat:write",
+                "channels:read",
+                "users:read",
+                "groups:read",
+                "mpim:read",
+                "channels:history",
+                "commands"
+            ]
+        }
+    },
+    "settings": {
+        "event_subscriptions": {
+            "request_url": "AUTOCODE_EVENTS_LINK",
+            "bot_events": [
+                "member_joined_channel",
+                "message.channels"
+            ]
+        },
+        "interactivity": {
+            "is_enabled": true,
+            "request_url": "AUTOCODE_EVENTS_LINK"
+        },
+        "org_deploy_enabled": false,
+        "socket_mode_enabled": false,
+        "token_rotation_enabled": false
+    }
+}

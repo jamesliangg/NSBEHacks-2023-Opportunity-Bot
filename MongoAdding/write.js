@@ -1,13 +1,21 @@
+// Change these to your MongoDB database
+const mongoCollection = "sample";
+const mongoDatabse = "artemis";
+const mongoDataSource = "AclaimBot";
+const mongoEndPoint = "https://us-east-2.aws.data.mongodb-api.com/app/data-ahszi/endpoint/data/v1/action/insertOne";
+
+
 import axios from "axios";
 import dotenv from "dotenv";
 dotenv.config();
 const mongo_key = process.env.MONGO_API_KEY;
 
+// writes the information to MongoDB
 export async function writeMongo(community, city, beginDate, endDate, link, opportunityName, summary, type) {
     var data = JSON.stringify({
-        "collection": "sample",
-        "database": "artemis",
-        "dataSource": "AclaimBot",
+        "collection": mongoCollection,
+        "database": mongoDatabse,
+        "dataSource": mongoDataSource,
         "document": {
             community: community,
             city: city,
@@ -22,7 +30,7 @@ export async function writeMongo(community, city, beginDate, endDate, link, oppo
 
     var config = {
         method: 'post',
-        url: 'https://us-east-2.aws.data.mongodb-api.com/app/data-ahszi/endpoint/data/v1/action/insertOne',
+        url: mongoEndPoint,
         headers: {
             'Content-Type': 'application/json',
             'Access-Control-Request-Headers': '*',
