@@ -27,12 +27,6 @@ The scraping function scrapes a website with opportunities using puppeteer. Thes
 
 <hr>
 
-## Using the bot
-- See available communities and locations with the `/opp help` command
-- Open the search box with `/opp search` 
-
-<!-- <hr> -->
-
 # Cloning the bot
 ## Requirements
 - Cohere API Key
@@ -51,6 +45,10 @@ You'll also need to replace the `mongo` variables at the top of the `write.js` f
 The `COHERE_API_KEY` and `MONGO_API_KEY` should be stored in a `.env` file in the same folder.
 
 You should be able to do `node index` to run the scraper.
+
+## Using the bot
+- See available communities and locations with the `/opp help` command
+- Open the search box with `/opp search` 
 
 <hr>
 
